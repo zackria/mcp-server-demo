@@ -20,15 +20,23 @@ function buildMcpServer(): McpServer {
     version: '1.0.0',
   });
 
-  server.registerTool('list_expiring_vendors', { title: 'List Expiring Vendors', description: 'Returns vendors whose accreditation will expire within the next N days' }, listExpiringVendorsSchema, listExpiringVendorsHandler);
+  server.registerTool(
+    'list_expiring_vendors',
+    {
+      title: 'List Expiring Vendors',
+      description: 'Returns vendors whose accreditation will expire within the next N days',
+      inputSchema: listExpiringVendorsSchema,
+    },
+    listExpiringVendorsHandler
+  );
 
   server.registerTool(
     'get_vendor',
     {
       title: 'Get Vendor Details',
       description: 'Retrieves the full vendor record including accreditation status and audit history',
+      inputSchema: getVendorSchema,
     },
-    getVendorSchema,
     getVendorHandler
   );
 
@@ -36,10 +44,9 @@ function buildMcpServer(): McpServer {
     'update_accreditation_status',
     {
       title: 'Update Accreditation Status',
-      description:
-        'Updates a vendor\'s accreditation status and records an audit log entry. Requires accreditationExpiryDate to be in the future if setting status to \'Active\'.',
+      description: 'Updates a vendor\'s accreditation status and records an audit log entry. Requires accreditationExpiryDate to be in the future if setting status to \'Active\'.',
+      inputSchema: updateAccreditationStatusSchema,
     },
-    updateAccreditationStatusSchema,
     updateAccreditationStatusHandler
   );
 
@@ -48,8 +55,8 @@ function buildMcpServer(): McpServer {
     {
       title: 'Search Vendors',
       description: 'Performs free-text search across vendor names and categories',
+      inputSchema: searchVendorsSchema,
     },
-    searchVendorsSchema,
     searchVendorsHandler
   );
 
