@@ -35,10 +35,13 @@ https://vendor-accreditation-mcp-njd6yb2p2q-uc.a.run.app
 #   NO Authentication needed (service is public)
 #   Headers: Leave empty
 
-# Step 3: In Claude Code, ask:
-# @claude-code: List all vendors expiring in the next 30 days
+# Step 3: Call Your Tools with @mention syntax:
+# @vendor-accreditation-mcp: list_expiring_vendors with daysAhead=30
 
-# The service will respond with all 4 tools!
+# Or ask naturally:
+# Show me vendors expiring in the next 30 days
+# 
+# Note: Use @name to call tools, /mcp is for managing servers!
 ```
 
 **Updated Service URL:** `https://vendor-accreditation-mcp-650044220515.us-central1.run.app/mcp`

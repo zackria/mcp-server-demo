@@ -67,13 +67,18 @@ curl -X POST https://vendor-accreditation-mcp-abc123def.run.app/mcp \
   - **Headers**: Leave empty
   - **Authentication**: None (service is public)
 
-### Step 3: Test
-In Claude Code, ask:
+### Step 3: Test with Method 2 (Recommended)
+Use the `@mention` syntax in Claude Code:
 ```
-@claude-code: List all vendors expiring in the next 30 days
+@vendor-accreditation-mcp: list_expiring_vendors with daysAhead=30
 ```
 
-Claude will automatically call your MCP tool and show the results!
+Or ask naturally and Claude will use the right tool:
+```
+Show me all vendors expiring in the next 30 days
+```
+
+**Note:** `/mcp` is for managing servers, not calling tools. Use `@` to invoke tools directly!
 
 ---
 
