@@ -63,11 +63,19 @@ gcloud auth print-identity-token
 - Go to **Settings → MCP Servers** or use `/mcp` command
 - Click **Add Server**
 - Choose **HTTP** transport
-- Fill in:
+- Fill in these fields:
   - **Name**: `vendor-accreditation-mcp`
   - **URL**: `https://vendor-accreditation-mcp-abc123def.run.app/mcp`
-  - **Authentication**: `BearerToken`
-  - **Token**: (Paste the token from Step 1)
+  - **Headers**: Add a new header with this exact format:
+    ```
+    Authorization: Bearer YOUR_TOKEN_HERE
+    ```
+    Replace `YOUR_TOKEN_HERE` with the token output from Step 1
+  
+  **If you see a Headers error**, try the alternative:
+  - Look for **Authentication Type** dropdown
+  - Select `BearerToken`
+  - Paste the token in the **Token** field
 
 ### Step 3: Test
 In Claude Code, type:

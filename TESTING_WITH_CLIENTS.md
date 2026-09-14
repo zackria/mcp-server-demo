@@ -26,16 +26,28 @@ In Claude Code, use the **MCP** command or sidebar to add an MCP server:
 2. Go to **Settings → MCP Servers** (or use the `/mcp` command)
 3. Click **Add Server**
 4. Choose **HTTP** (or **Streamable HTTP**) transport
-5. Enter your server details:
+
+5. **Get your identity token first:**
+   ```bash
+   gcloud auth print-identity-token
+   ```
+   This returns a long token string. Copy it.
+
+6. **Configure the server with these exact settings:**
    - **Name**: `vendor-accreditation-mcp`
    - **URL**: `https://vendor-accreditation-mcp-abc123.run.app/mcp`
-   - **Authentication**: 
-     - Type: `BearerToken`
-     - Token: Run this in your terminal to get a token:
-       ```bash
-       gcloud auth print-identity-token
-       ```
-       (Copy the output and paste it as the bearer token)
+   - **Headers** (manually add):
+     ```
+     Authorization: Bearer YOUR_TOKEN_HERE
+     ```
+     Replace `YOUR_TOKEN_HERE` with the token from step 5
+   
+   **Alternative (if Headers field doesn't work):**
+   - Look for **Authentication** or **Auth Type** dropdown
+   - Select `BearerToken`
+   - Paste the token in the **Token** field
+
+7. **Save** the configuration
 
 ### Step 3: Test the Tools in Claude Code
 

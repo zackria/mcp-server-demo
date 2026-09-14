@@ -26,13 +26,19 @@ https://vendor-accreditation-mcp-njd6yb2p2q-uc.a.run.app
 ```bash
 # Step 1: Get your identity token
 TOKEN=$(gcloud auth print-identity-token)
+echo $TOKEN  # Copy this value
 
-# Step 2: Open Claude Code Settings → MCP Servers → Add Server
-# Fill in:
+# Step 2: Open Claude Code Settings → MCP Servers → Add Server (HTTP)
+# Fill in these fields:
 #   Name: vendor-accreditation-mcp
 #   URL: https://vendor-accreditation-mcp-njd6yb2p2q-uc.a.run.app/mcp
-#   Auth: BearerToken
-#   Token: $TOKEN
+#   Headers: Add one header with format:
+#     Authorization: Bearer YOUR_TOKEN_HERE
+#   (Replace YOUR_TOKEN_HERE with the token from Step 1)
+#
+# If Headers field shows error, try instead:
+#   Look for "Authentication Type" dropdown → select "BearerToken"
+#   Paste token in "Token" field
 
 # Step 3: In Claude Code, ask:
 # @claude-code: List all vendors expiring in the next 30 days
