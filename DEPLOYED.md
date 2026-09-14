@@ -23,26 +23,25 @@ https://vendor-accreditation-mcp-njd6yb2p2q-uc.a.run.app
 
 ### For Claude Code Users
 
-```bash
-# Step 1: Get your identity token
-TOKEN=$(gcloud auth print-identity-token)
-echo $TOKEN  # Copy this value
+**✅ Your MCP Server is Now Public & Working!**
 
-# Step 2: Open Claude Code Settings → MCP Servers → Add Server (HTTP)
-# Fill in these fields:
+```bash
+# Step 1: Open Claude Code Settings → MCP Servers → Add Server
+
+# Step 2: Choose "HTTP" Transport and fill in:
 #   Name: vendor-accreditation-mcp
-#   URL: https://vendor-accreditation-mcp-njd6yb2p2q-uc.a.run.app/mcp
-#   Headers: Add one header with format:
-#     Authorization: Bearer YOUR_TOKEN_HERE
-#   (Replace YOUR_TOKEN_HERE with the token from Step 1)
-#
-# If Headers field shows error, try instead:
-#   Look for "Authentication Type" dropdown → select "BearerToken"
-#   Paste token in "Token" field
+#   URL: https://vendor-accreditation-mcp-650044220515.us-central1.run.app/mcp
+#   
+#   NO Authentication needed (service is public)
+#   Headers: Leave empty
 
 # Step 3: In Claude Code, ask:
 # @claude-code: List all vendors expiring in the next 30 days
+
+# The service will respond with all 4 tools!
 ```
+
+**Updated Service URL:** `https://vendor-accreditation-mcp-650044220515.us-central1.run.app/mcp`
 
 ### For GitHub Copilot Users
 

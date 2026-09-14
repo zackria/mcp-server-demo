@@ -53,37 +53,27 @@ curl -X POST https://vendor-accreditation-mcp-abc123def.run.app/mcp \
 
 ## 💬 Connect to Claude Code
 
-### Step 1: Get Identity Token
-```bash
-gcloud auth print-identity-token
-```
-(Copy this token — it expires in 1 hour)
+**✅ Service is now public! No authentication needed.**
 
-### Step 2: Open Claude Code
+### Step 1: Open Claude Code Settings
 - Go to **Settings → MCP Servers** or use `/mcp` command
 - Click **Add Server**
+
+### Step 2: Configure the Server
 - Choose **HTTP** transport
-- Fill in these fields:
+- Fill in:
   - **Name**: `vendor-accreditation-mcp`
-  - **URL**: `https://vendor-accreditation-mcp-abc123def.run.app/mcp`
-  - **Headers**: Add a new header with this exact format:
-    ```
-    Authorization: Bearer YOUR_TOKEN_HERE
-    ```
-    Replace `YOUR_TOKEN_HERE` with the token output from Step 1
-  
-  **If you see a Headers error**, try the alternative:
-  - Look for **Authentication Type** dropdown
-  - Select `BearerToken`
-  - Paste the token in the **Token** field
+  - **URL**: `https://vendor-accreditation-mcp-650044220515.us-central1.run.app/mcp`
+  - **Headers**: Leave empty
+  - **Authentication**: None (service is public)
 
 ### Step 3: Test
-In Claude Code, type:
+In Claude Code, ask:
 ```
-@claude-code list vendors expiring in the next 30 days
+@claude-code: List all vendors expiring in the next 30 days
 ```
 
-Claude will call your MCP tool and display results!
+Claude will automatically call your MCP tool and show the results!
 
 ---
 
