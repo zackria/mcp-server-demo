@@ -5,16 +5,10 @@ import { updateVendorStatus } from '../db';
 import { AccreditationStatus, serializeVendor } from '../types';
 
 export const updateAccreditationStatusSchema = {
-  vendorId: z.string().min(1).describe('Stable external vendor identifier'),
-  status: z
-    .enum(['Active', 'Expired', 'Suspended'])
-    .describe('New accreditation status'),
-  reason: z
-    .string()
-    .min(3)
-    .max(500)
-    .describe('Justification recorded in the audit log'),
-};
+  vendorId: z.string().min(1),
+  status: z.enum(['Active', 'Expired', 'Suspended']),
+  reason: z.string().min(3).max(500),
+} as any;
 
 export async function updateAccreditationStatusHandler(args: {
   vendorId: string;

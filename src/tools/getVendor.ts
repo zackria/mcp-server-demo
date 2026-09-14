@@ -5,8 +5,8 @@ import { findVendorById } from '../db';
 import { serializeVendor } from '../types';
 
 export const getVendorSchema = {
-  vendorId: z.string().min(1).describe("Stable external vendor identifier (not MongoDB's ObjectId)"),
-};
+  vendorId: z.string().min(1),
+} as any;
 
 export async function getVendorHandler(args: { vendorId: string }): Promise<CallToolResult> {
   const start = Date.now();

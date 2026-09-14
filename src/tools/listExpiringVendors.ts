@@ -4,13 +4,8 @@ import { logger } from '../logger';
 import { findExpiringVendors } from '../db';
 
 export const listExpiringVendorsSchema = {
-  daysAhead: z
-    .number()
-    .int()
-    .positive()
-    .max(3650)
-    .describe('Look-ahead window in days for upcoming accreditation expiries'),
-};
+  daysAhead: z.number().int().positive().max(3650),
+} as any;
 
 export async function listExpiringVendorsHandler(args: {
   daysAhead: number;

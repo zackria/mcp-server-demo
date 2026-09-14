@@ -5,18 +5,9 @@ import { searchVendors } from '../db';
 import { serializeVendor } from '../types';
 
 export const searchVendorsSchema = {
-  query: z
-    .string()
-    .min(1)
-    .max(200)
-    .describe('Free-text term matched against vendor name and category'),
-  category: z
-    .string()
-    .min(1)
-    .max(100)
-    .optional()
-    .describe('Optional additional category filter (partial, case-insensitive)'),
-};
+  query: z.string().min(1).max(200),
+  category: z.string().min(1).max(100).optional(),
+} as any;
 
 export async function searchVendorsHandler(args: {
   query: string;
